@@ -5,7 +5,7 @@ GITHUB_RUN_ID?=1
 export TF_VAR_build_number=$(GITHUB_RUN_ID)
 export TF_VAR_api_token=$(ACCEPTANCE_PACT_BROKER_TOKEN)
 
-ci:: clean docker deps vet bin test acceptance-test
+ci:: clean docker deps vet bin test pact publish acceptance-test
 
 local-no-clean: build
 	terraform init && \
