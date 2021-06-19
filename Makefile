@@ -2,6 +2,8 @@ TEST?=./...
 
 .DEFAULT_GOAL := ci
 GITHUB_RUN_ID?=1
+PACT_CLI="docker run --rm -v ${PWD}:${PWD} -e PACT_BROKER_BASE_URL -e PACT_BROKER_TOKEN pactfoundation/pact-cli:latest"
+
 export TF_VAR_build_number=$(GITHUB_RUN_ID)
 export TF_VAR_api_token=$(ACCEPTANCE_PACT_BROKER_TOKEN)
 
@@ -45,7 +47,7 @@ bin:
 	@echo "==> Results:"
 	ls -hl bin/
 
-deps: cli
+deps:
 	@echo "--- 🐿  Fetching build dependencies "
 	cd /tmp; \
 	go get github.com/axw/gocov/gocov; \
@@ -53,7 +55,7 @@ deps: cli
 	go get golang.org/x/tools/cmd/cover; \
 	go get github.com/modocache/gover; \
 	go get github.com/mitchellh/gox; \
-	go get github.com/pact-foundation/pact-go; \
+	go get github.com/pact-foundation/pact-go/v2@2.x.x; \
 	cd -
 
 goveralls:
@@ -74,12 +76,6 @@ test:
 
 	go tool cover -func coverage.txt
 
-cli:
-	@if [ ! -d pact/bin ]; then\
-		echo "--- 🐿 Installing Pact CLI dependencies"; \
-		curl -fsSL https://raw.githubusercontent.com/pact-foundation/pact-ruby-standalone/master/install.sh | bash -x; \
-  fi
-
 pact-go:
 	echo "--- 🐿 Installing Pact FFI dependencies"
 	pact-go	-l DEBUG install --libDir /tmp
@@ -90,9 +86,14 @@ pact: pact-go
 
 publish:
 	@echo "--- 🤝 Publishing Pact"
+	"${PACT_CLI}" publish ${PWD}/client/pacts --consumer-app-version ${GITHUB_SHA} --tag ${GITHUB_BRANCH}
 
-# TODO:
-# can-i-deploy:
+can-i-deploy:
+	@echo "--- 🤝 Can I Deploy?"
+	# @"${PACT_CLI}" broker can-i-deploy \
+	#   --pacticipant "terraform-client" \
+	#   --version ${GITHUB_SHA} \
+	#   --to prod
 
 oss-acceptance-test:
 	@echo "--- Running OSS acceptance tests"
