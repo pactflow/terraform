@@ -55,8 +55,8 @@ deps:
 	go get golang.org/x/tools/cmd/cover; \
 	go get github.com/modocache/gover; \
 	go get github.com/mitchellh/gox; \
-	go get github.com/pact-foundation/pact-go/v2@2.x.x; \
 	cd -
+	go get github.com/pact-foundation/pact-go/v2@2.x.x;
 
 goveralls:
 	goveralls -service="travis-ci" -coverprofile=coverage.txt -repotoken $(COVERALLS_TOKEN)
