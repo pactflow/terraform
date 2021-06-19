@@ -32,8 +32,8 @@ output
 *.bak
 _*
 *.log
-logs
-log
+./logs
+./log
 tmp
 coverage.txt
 
