@@ -3,7 +3,7 @@ TEST?=./...
 .DEFAULT_GOAL := ci
 GITHUB_RUN_ID?=1
 export TF_VAR_build_number=$(GITHUB_RUN_ID)
-export TF_VAR_api_token=$(PACT_BROKER_TOKEN)
+export TF_VAR_api_token=$(ACCEPTANCE_PACT_BROKER_TOKEN)
 
 ci:: clean docker deps vet bin test acceptance-test
 
@@ -45,13 +45,16 @@ bin:
 	@echo "==> Results:"
 	ls -hl bin/
 
-deps:
+deps: cli
 	@echo "--- 🐿  Fetching build dependencies "
-	go get github.com/axw/gocov/gocov
-	go get github.com/mattn/goveralls
-	go get golang.org/x/tools/cmd/cover
-	go get github.com/modocache/gover
-	go get github.com/mitchellh/gox
+	cd /tmp; \
+	go get github.com/axw/gocov/gocov; \
+	go get github.com/mattn/goveralls; \
+	go get golang.org/x/tools/cmd/cover; \
+	go get github.com/modocache/gover; \
+	go get github.com/mitchellh/gox; \
+	go get github.com/pact-foundation/pact-go; \
+	cd -
 
 goveralls:
 	goveralls -service="travis-ci" -coverprofile=coverage.txt -repotoken $(COVERALLS_TOKEN)
@@ -70,6 +73,26 @@ test:
 	done; \
 
 	go tool cover -func coverage.txt
+
+cli:
+	@if [ ! -d pact/bin ]; then\
+		echo "--- 🐿 Installing Pact CLI dependencies"; \
+		curl -fsSL https://raw.githubusercontent.com/pact-foundation/pact-ruby-standalone/master/install.sh | bash -x; \
+  fi
+
+pact-go:
+	echo "--- 🐿 Installing Pact FFI dependencies"
+	pact-go	-l DEBUG install --libDir /tmp
+
+pact: pact-go
+	@echo "--- 🤝 Running Pact tests"
+	go test -v -tags=consumer -count=1 ./client
+
+publish:
+	@echo "--- 🤝 Publishing Pact"
+
+# TODO:
+# can-i-deploy:
 
 oss-acceptance-test:
 	@echo "--- Running OSS acceptance tests"

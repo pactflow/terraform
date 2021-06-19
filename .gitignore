@@ -47,3 +47,6 @@ terraform.tfstate.backup
 
 # Local
 .env
+
+# Pact
+./client/pacts

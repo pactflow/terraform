@@ -5,7 +5,7 @@ import (
 	"net/url"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-	"github.com/pact-foundation/terraform/client"
+	"github.com/pactflow/terraform/client"
 )
 
 func Provider() *schema.Provider {

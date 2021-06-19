@@ -11,7 +11,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/pact-foundation/terraform/broker"
+	"github.com/pactflow/terraform/broker"
 )
 
 const (
@@ -74,7 +74,7 @@ func NewClient(httpClient *http.Client, config Config) *Client {
 		httpClient = http.DefaultClient
 	}
 
-	if config.CustomTLSConfig.InsecureSkipVerify {
+	if config.CustomTLSConfig != nil && config.CustomTLSConfig.InsecureSkipVerify {
 		httpClient.Transport = &http.Transport{
 			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 		}
