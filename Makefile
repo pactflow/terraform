@@ -82,7 +82,7 @@ pact-go:
 
 pact: pact-go
 	@echo "--- 🤝 Running Pact tests"
-	go test -v -tags=consumer -count=1 ./client
+	go test -tags=consumer -count=1 -v github.com/pactflow/terraform/client/...
 
 publish:
 	@echo "--- 🤝 Publishing Pact"
