@@ -26,4 +26,6 @@ jobs:
       - name: Test
         run: make
         env:
-          PACT_BROKER_TOKEN: "${{ secrets.PACT_BROKER_TOKEN }}"
+          ACCEPTANCE_PACT_BROKER_TOKEN: "${{ secrets.ACCEPTANCE_PACT_BROKER_TOKEN }}"
+          PACTFLOW_PACT_BROKER_TOKEN: "${{ secrets.PACTFLOW_PACT_BROKER_TOKEN }}"
+          PACTFLOW_PACT_BROKER_BASE_URL: "${{ secrets.PACTFLOW_PACT_BROKER_BASE_URL }}"
