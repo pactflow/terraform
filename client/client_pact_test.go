@@ -1,3 +1,5 @@
+// +build consumer
+
 package client
 
 import (

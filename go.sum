@@ -346,8 +346,8 @@ github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e/go.mod h1:zD1mROLA
 github.com/oklog/run v1.0.0 h1:Ru7dDtJNOyC66gQ5dQmaCa0qIsAUFY3sFpK1Xk8igrw=
 github.com/oklog/run v1.0.0/go.mod h1:dlhp/R75TPv97u0XWUtDeV/lRKWPKSdTuV0TZvrmrQA=
 github.com/oklog/ulid v1.3.1/go.mod h1:CirwcVhetQ6Lv90oh/F+FBtV6XMibvdAFo93nm5qn4U=
-github.com/pact-foundation/pact-go/v2 v2.0.0-20210619051630-8ebc234dc98c h1:BuJ7s+Z5wLNi7bjcALv0WhWH7wTV3PyF+ZbEC5aHw9A=
-github.com/pact-foundation/pact-go/v2 v2.0.0-20210619051630-8ebc234dc98c/go.mod h1:PD3fonf3iERFx4T7Dpa3TKq8J2FJJww+nhKLPbYEEdg=
+github.com/pact-foundation/pact-go/v2 v2.0.0-20210619122603-86753f6d9b37 h1:TJTaVgX4i0LcR4xZtHsV0x4kYzPFeG7e1o6HsruAJPM=
+github.com/pact-foundation/pact-go/v2 v2.0.0-20210619122603-86753f6d9b37/go.mod h1:PD3fonf3iERFx4T7Dpa3TKq8J2FJJww+nhKLPbYEEdg=
 github.com/pascaldekloe/goe v0.0.0-20180627143212-57f6aae5913c/go.mod h1:lzWF7FIEvWOWxwDKqyGYQf6ZUaNfKdP144TG7ZOy1lc=
 github.com/pelletier/go-toml v1.2.0/go.mod h1:5z9KED0ma1S8pY6P1sdut58dfprrGBbd/94hg7ilaic=
 github.com/pierrec/lz4 v2.0.5+incompatible/go.mod h1:pdkljMzZIN41W+lC3N2tnIh5sFi+IEE17M5jbnwPHcY=
