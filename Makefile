@@ -7,7 +7,7 @@ PACT_CLI="docker run --rm -v ${PWD}:${PWD} -e PACT_BROKER_BASE_URL -e PACT_BROKE
 export TF_VAR_build_number=$(GITHUB_RUN_ID)
 export TF_VAR_api_token=$(ACCEPTANCE_PACT_BROKER_TOKEN)
 
-ci:: clean docker deps vet bin test pact publish acceptance-test
+ci:: clean docker deps pact-go vet bin test pact publish acceptance-test
 
 local-no-clean: build
 	terraform init && \
@@ -78,7 +78,7 @@ test:
 
 pact-go:
 	echo "--- 🐿 Installing Pact FFI dependencies"
-	pact-go	-l DEBUG install --libDir /tmp
+	~/go/bin/pact-go -l DEBUG install --libDir /tmp
 
 pact: pact-go
 	@echo "--- 🤝 Running Pact tests"
