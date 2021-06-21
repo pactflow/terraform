@@ -250,14 +250,22 @@ github.com/mitchellh/mapstructure
 github.com/mitchellh/reflectwalk
 # github.com/oklog/run v1.0.0
 github.com/oklog/run
-# github.com/pact-foundation/pact-go/v2 v2.0.0-20210619122603-86753f6d9b37
+# github.com/pact-foundation/pact-go/v2 v2.0.0-20210620003421-cdaa61132a0f
 ## explicit
 github.com/pact-foundation/pact-go/v2/consumer
+github.com/pact-foundation/pact-go/v2/installer
+github.com/pact-foundation/pact-go/v2/internal/checker
 github.com/pact-foundation/pact-go/v2/internal/native/mockserver
+github.com/pact-foundation/pact-go/v2/internal/native/verifier
 github.com/pact-foundation/pact-go/v2/log
 github.com/pact-foundation/pact-go/v2/matchers
+github.com/pact-foundation/pact-go/v2/message
 github.com/pact-foundation/pact-go/v2/models
+github.com/pact-foundation/pact-go/v2/provider
+github.com/pact-foundation/pact-go/v2/proxy
+github.com/pact-foundation/pact-go/v2/sugar
 github.com/pact-foundation/pact-go/v2/utils
+github.com/pact-foundation/pact-go/v2/version
 # github.com/pmezard/go-difflib v1.0.0
 github.com/pmezard/go-difflib/difflib
 # github.com/posener/complete v1.2.1

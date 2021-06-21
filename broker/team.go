@@ -28,9 +28,11 @@ type TeamsAssignmentRequest struct {
 }
 
 type TeamsAssignmentResponse struct {
-	Embedded struct {
-		Users []User `json:"users,omitempty"`
-	} `json:"_embedded,omitempty"`
+	Embedded EmbeddedUsers `json:"_embedded,omitempty"`
+}
+
+type EmbeddedUsers = struct {
+	Users []User `json:"users,omitempty"`
 }
 
 // Create POST /admin/teams
