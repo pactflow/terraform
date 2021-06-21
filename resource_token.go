@@ -156,7 +156,6 @@ func tokenUpdate(d *schema.ResourceData, meta interface{}) error {
 }
 
 func tokenRead(d *schema.ResourceData, meta interface{}) error {
-	token := &broker.APIToken{}
 	httpClient := meta.(*client.Client)
 	uuid := d.Id()
 
